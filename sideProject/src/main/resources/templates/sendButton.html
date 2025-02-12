@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link rel="stylesheet" href="CSS/sendBtn.css">
+<link rel="stylesheet" th:href="@{/css/sendBtn.css}">
+<link rel="stylesheet" href="../static/CSS/sendBtn.css">
+</head>
+
+<body>
+	<button id="openModalBtn" class="sendBtnMemberid">發送郵件</button>
+	<!-- 彈出視窗 -->
+	<div id="sendModel"
+		style="display: none; position: fixed; top: 0; left: 0;">
+		<div class="sendModelContent" style="position: relative;">
+			<span class="sendClose">&times;</span>
+			<div class="sendModelBox">
+				<form th:action="@{/sendButton_submit}" th:object="${message}" method="post">
+					<div class="left">
+						<label for="receiverEmail" class="mystyle">收信人&emsp; <span
+							th:if="${#fields.hasErrors('receiverid.email')}"
+							th:errors="*{receiverid.email}" style="color: red;"></span>
+						</label> <input type="email" th:field="*{receiverid.email}" />
+					</div>
+					<div class="left">
+						<label for="title" class="mystyle">標&emsp;題&emsp; <span
+							th:if="${#fields.hasErrors('title')}" th:errors="*{title}"
+							style="color: red;"></span>
+						</label> <input type="text" th:field="*{title}" />
+					</div>
+					<div class="left">
+						<label for="content" class="mystyle">內&emsp;文&emsp; <span
+							th:if="${#fields.hasErrors('content')}" th:errors="*{content}"
+							style="color: red;"></span>
+						</label>
+						<textarea th:field="*{content}"></textarea>
+					</div>
+					<input type="submit" value="寄信" class=" sendBtn" />
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		// 獲取彈窗和按鈕元素
+		var modal = document.getElementById("sendModel"); // 確保名稱一致
+		var openBtn = document.getElementById("openModalBtn");
+		var closeBtn = document.querySelector(".sendClose");
+
+		// 確保元素都成功選取
+		if (modal && openBtn && closeBtn) {
+			// 點擊按鈕打開彈窗
+			openBtn.onclick = function() {
+				modal.style.display = "block";
+			}
+
+			// 點擊關閉按鈕關閉彈窗
+			closeBtn.onclick = function() {
+				modal.style.display = "none";
+			}
+
+			// 點擊彈窗以外區域時也關閉彈窗
+			window.onclick = function(event) {
+				if (event.target === modal) {
+					modal.style.display = "none";
+				}
+			}
+		} else {
+			console.error("找不到 modal 或按鈕，請檢查 HTML 結構！");
+		}
+	</script>
+</body>
+
+
+</html>

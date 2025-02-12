@@ -1,0 +1,112 @@
+a{
+    text-decoration: none;
+}
+
+body {
+	background-color: #bbc8d8;
+    height: 100vh;
+    width: 100vw;
+}
+
+
+
+h3{
+    font-size: 1.5rem;
+    background-color: #eaeff3;
+}
+
+#username,#account,
+#password,
+#checkpasswd,
+#tel,#email,#birthday
+{
+    width: 200px;
+    height: 20px;
+    margin: 10px;
+    font-size: 1rem;
+    color: #303030;
+}
+
+h5 {
+    margin: 21px;
+    color: #14518e;
+    background-color: #eaeff3;
+}
+
+h5:hover {
+    color: #c59650;
+}
+
+#bigOut{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#register {
+    width: 65%;
+    padding: 20px;
+    /* width: auto; */
+    height: auto;
+    border-style:9px #c59650;
+    background-color: #eaeff3;
+    /* border-top: 40px solid #14518e;s */
+    /* box-shadow: 0 0px 70px rgba(0, 0, 0, 0.1); */
+    border-radius: 5px;
+    /*定位對齊*/
+    /* position: relative; */
+    /*margin: auto;*/
+    text-align:center;  
+
+}
+.all{
+    background-color: #eaeff3;	
+}
+
+
+.submit {
+    color: #14518e;
+    background: #bbc8d8;
+    width: 200px;
+    font-size: 1rem;
+
+    margin: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border-color: #14518e;
+
+}
+
+.submit:hover {
+    background: #14518e;
+    color: #eaeff3;
+}
+
+
+input {
+    padding: 15px;
+    border: none;
+    border: solid 1px #c59650;
+    border-radius: 5px;
+    background-color: #eaeff3;
+}
+
+input[type=checkbox] {
+    display: none;
+}
+
+input[type=checkbox]+span {
+    display: inline-block;
+    margin: 5px;
+    border-radius: 5px;
+    background-color: #bbc8d8;
+    padding: 3px 6px;
+    border: 1px solid #14518e;
+    color: #14518e;
+    user-select: none; /* 防止文字被滑鼠選取反白 */
+}
+
+input[type=checkbox]:checked+span {
+    color: #eaeff3;
+    background-color: #14518e;
+}

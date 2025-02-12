@@ -1,0 +1,129 @@
+main {
+    padding: 0 10%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+main a {
+    text-decoration: none;
+    color: #303030;
+}
+
+input[type='checkbox'] {
+    margin: 5px 2px 5px 3px;
+}
+
+main form {
+    line-height: 36px;
+    font-size: 18px;
+    z-index: 500;
+}
+
+.formBoxBorder {
+    border: 1px solid #c59650;
+    border-radius: 10px;
+    padding: 12px;
+    background-color: #eaeff3;
+}
+.caseCards{
+    margin-top: 20px;
+}
+.boxBorder {
+    border: 1px solid #c59650;
+    border-radius: 10px;
+    padding: 12px;
+    background-color: #eaeff3;
+}
+.boxBorder:hover {
+    box-shadow: 0px 0px 15px #c596506d;
+}
+
+.boxBorder div,
+.boxBorder p,
+.boxBorder h3,
+.boxBorder span,
+.boxBorder h5,
+.formBoxBorder form,
+.formBoxBorder label{
+    background-color: #eaeff3;
+}
+.boxBorder p{
+    margin: 0;
+}
+
+#caseBox{
+    justify-content: center;
+    padding-left: 35px;
+}
+
+.caseImgBox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.caseImgBox>img {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #c59650;
+    border-radius: 5px;
+    background-color: #c59650;
+    object-fit: cover;
+}
+
+#btn {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.keywordSortBtn{
+    border-width: 0 0 1px 0;
+    border-color: #c59650;
+    border-style: solid;
+    color: #14518e;
+    margin: 0 10px;
+    padding: 5px;
+}
+.keywordSortBtn:hover,
+.keywordSortBtn:focus{
+    box-shadow: 0px 8px 8px -3px #c596506d;
+}
+
+.searchContainer {
+    position: relative;
+    max-width: 100%;
+    z-index: 500;
+}
+
+.searchContainer input[type="text"] {
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+    border-radius: 30px;
+    border: 2px solid #c59650;
+    margin: 5px 50px 0 0;
+}
+.searchContainer input[type="text"],
+.searchContainer button:focus {
+    outline: none;
+    border-color: #c59650;
+    color: #14518e;
+}
+.searchContainer button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    /* width: 40px; */
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchContainer button>i {
+    color: #c59650;
+    font-size: 30px;
+    margin-right: 30px;
+}

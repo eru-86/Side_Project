@@ -1,0 +1,140 @@
+main {
+    padding: 0 10%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+/* section,div{
+    border: 1px solid black;
+} */
+input[type='checkbox'] {
+    margin: 5px 2px 5px 3px;
+}
+
+main form {
+    line-height: 36px;
+    font-size: 18px;
+}
+
+main a {
+    text-decoration: none;
+    color: #303030;
+}
+main p {
+    overflow: hidden; 
+    white-space: nowrap; 
+    text-overflow: ellipsis; 
+}
+main h1{
+    border-style: solid;
+    border-left: 1px;
+    border-right: 1px;
+    border-color: #c59650;
+    margin: 20px 50px 20px 0;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.memberCards{
+    margin-top: 25px;
+}
+
+.formBoxBorder {
+    border: 1px solid #c59650;
+    border-radius: 10px;
+    padding: 12px;
+    background-color: #eaeff3;
+}
+.boxBorder {
+    border: 1px solid #c59650;
+    border-radius: 10px;
+    padding: 12px;
+    background-color: #eaeff3;
+}
+.boxBorder:hover {
+    box-shadow: 0px 0px 15px #c596506d;
+}
+
+.boxBorder div,
+.boxBorder p,
+.boxBorder h3,
+.boxBorder span,
+.formBoxBorder form,
+.formBoxBorder label{
+    background-color: #eaeff3;
+}
+.boxBorder p{
+    margin: 0;
+}
+
+.indexCaseBox {
+    padding: 15px 50px 15px 0px;
+
+}
+
+#userImg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#userImg>img {
+    width: 250px;
+    height: 250px;
+    border: 1px solid #c59650;
+    border-radius: 5px;
+    background-color: #c59650;
+    object-fit: cover;
+}
+
+#userData {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+
+.searchContainer {
+    position: relative;
+    max-width: 100%;
+    z-index: 500;
+}
+
+.searchContainer input[type="text"] {
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+    border-radius: 30px;
+    border: 2px solid #c59650;
+    margin: 25px 50px 0 0;
+}
+
+.searchContainer input[type="text"],
+.searchContainer button:focus {
+    outline: none;
+    border-color: #c59650;
+    color: #14518e;
+}
+
+.searchContainer button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    /* width: 40px; */
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchContainer button>i {
+    color: #c59650;
+    font-size: 30px;
+    margin-right: 30px;
+    margin-top: 20px;
+}

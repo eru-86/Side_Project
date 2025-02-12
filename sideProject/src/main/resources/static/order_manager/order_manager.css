@@ -1,0 +1,286 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 12px;
+    background-color: #14518e;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #1963ad;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #14518e;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #114477;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    font-family: monospace;
+    font-size: 20px;
+    background-color: #bbc8d8;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    height: 60px; /* 固定導航列高度 */
+    background-color: #14518e;
+    color: white;
+}
+
+nav ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%; /* 將導航列的高度應用於內容 */
+}
+
+nav ul li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+nav ul li a {
+    padding: 18px;
+    text-decoration: none;
+    display: block;
+    color: white;
+}
+
+nav ul li a:hover {
+    background-color: #1963ad;
+}
+
+nav ul li p {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.mainBody {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 60px; /* 確保主內容不與導航列重疊 */
+}
+
+.up {
+    width: 100%;
+    background-color: #619dd4;
+    text-align: left;
+    display: flex;
+    padding: 20px;
+    box-sizing: border-box;
+    border: 0.5rem outset #5184b3;
+}
+
+.down {
+    width: 100%;
+    height: 100%;
+    background-color: #14518e;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+}
+
+.title {
+    color: white;
+    font-size: x-large;
+    text-align: center;
+    margin: 10px;
+}
+
+#orderListSide {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    border: 0.5rem outset #5589b9;
+}
+
+#detailContentSide {
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+    border: 0.5rem outset #5589b9;
+}
+
+.orderList {
+    width: 100%;
+    height: 100%;
+    background-color: #93bbe2;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* 按鈕基礎樣式 */
+.listButton {
+    background-color: #f0f0f0; /* 淺灰背景 */
+    border: 1px solid #ccc; /* 灰色邊框 */
+    border-radius: 5px; /* 圓角 */
+    color: #333; /* 文字顏色 */
+    font-size: 14px; /* 文字大小 */
+    padding: 8px 12px; /* 內距 */
+    margin: 5px; /* 按鈕之間的間距 */
+    cursor: pointer; /* 滑鼠指針 */
+    transition: all 0.3s; /* 增加過渡效果 */
+}
+
+/* 按鈕 hover 效果 */
+.listButton:hover {
+    background-color: #007bff; /* 藍色背景 */
+    color: #fff; /* 白色文字 */
+    border-color: #0056b3; /* 深藍邊框 */
+}
+
+/* 按鈕按下效果 */
+.listButton:active {
+    background-color: #0056b3; /* 深藍背景 */
+    border-color: #003f7f; /* 更深的藍邊框 */
+    transform: scale(0.98); /* 輕微縮小 */
+}
+
+ul {
+    list-style: none;
+}
+
+.detail {
+    width: 100%;
+    background-color: #c5d4e4;
+    text-align: center;
+}
+
+.footer {
+    bottom: 0;
+    left: 0;
+    background-color: #14518e;
+    padding: 5px;
+    text-align: center;
+    color: white;
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#i-alert {
+    color: red;
+}
+
+#memberEmail {
+    width: 300px;
+}
+
+#deleteButton {
+    left: 0;
+}
+
+.orderItem {
+    display: flex;
+    align-items: center;
+}
+
+.orderItem:hover {
+    color: white;
+    background-color: #1768b9;
+}
+
+.tag {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-left: 5px;
+    font-size: 12px;
+    color: #fff;
+}
+
+.tag.pink {
+    background-color: pink;
+    color: #000;
+}
+
+.tag.yellow {
+    background-color: yellow;
+    color: #000;
+}
+
+.tag.blue {
+    background-color: blue;
+}
+
+.tag.green {
+    background-color: green;
+}
+
+.detailField {
+    width: auto;
+}
+
+#detailContent {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-around; */
+    align-items: center;          /* 垂直居中對齊 */
+    height: 100%;                 /* 撐滿父容器 */
+    box-sizing: border-box;
+    padding: 20px;                /* 內距避免內容緊貼邊緣 */
+    gap: 20px;                    /* 子項目之間的間距 */
+}
+
+.detailFooter {
+    display: flex;
+    justify-content: flex-end;    /* 水平向右對齊 */
+    align-items: flex-end;        /* 垂直向下對齊 */
+    width: 100%;                  /* 撐滿容器寬度 */
+    margin-top: auto;             /* 自動推動到容器底部 */
+}
+
+#orderName, #orderDeadline, #orderLocation, #orderRank, #orderPeople {
+    padding: 10px;
+    border : solid .1px black;
+    border-radius: 15px;
+    background-color :  #fff;
+    outline: none;
+}
+
+#orderIntro, #orderDetail {
+    width: 500px;
+    height: 200px;
+    padding: 10px;
+    border : solid .1px black;
+    border-radius: 15px;
+    background-color :  #fff;
+    outline: none;
+}

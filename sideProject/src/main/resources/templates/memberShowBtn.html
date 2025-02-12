@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>測試彈窗首頁SideProject</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+		crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" th:href="@{/CSS/fragment.css}">
+    <link rel="stylesheet" th:href="@{/CSS/memberShowBtn.css}">
+	<link rel="stylesheet" th:href="@{CSS/sendBtn.css}">
+	<link rel="stylesheet" href="../static/CSS/fragment.css">
+	<link rel="stylesheet" href="../static/CSS/memberShowBtn.css">
+	<link rel="stylesheet" href="../static/CSS/sendBtn.css">
+	<style>
+
+
+	</style>
+</head>
+
+<body>
+	<div class="sticky" th:if="${member == null}" th:insert="fragments::header"></div>
+	<div class="sticky" th:if="${member!= null}" th:insert="fragments::userHeader"></div>
+
+	<main>
+		<!-- 隨機會員區，測試彈窗 -->
+		<section>
+			<button class="showMemberBtn" data-memberid="9">詳細資料</button>
+		</section>
+		<!-- member彈窗HTML -->
+		<div id="memberModel">
+			<div class="modelContent">
+				<span class="close">&times;</span>
+				<div class="caseShowMember">
+					<div class="caseMemberViewImg">
+						<img name="picurl" id="caseMemberIcon" src="" alt="" />
+						<button id="openModalBtn" class="sendBtnMemberid">發送郵件</button>
+					</div>
+					<div class="viewText caseShowMemberView">
+						<b>姓&nbsp;&nbsp;名：</b>
+						<span id="name">我是名字</span><br>
+						<b>帳&nbsp;&nbsp;號：</b>
+						<span id="account">我是帳號</span><br>
+						<b>Email：</b>
+						<span id="email">我是Email</span><br>
+						<b>電&nbsp;&nbsp;話：</b>
+						<span id="tel">我是電話</span><br>
+						<b>生&nbsp;&nbsp;日：</b>
+						<span id="birthday">我是生日</span><br>
+						<b>擅長技能：</b>
+						<span id="tagNames">我是技能</span><br>
+						<b>Github：</b>
+						<a href="" id="github">I'm GitHub</a><br>
+					</div>
+				</div>
+				<div class="viewText about">
+					<b>自我介紹：</b><br>
+					<span id="intro">自我介紹</span>
+				</div>
+			</div>
+		</div>
+
+		<!-- send彈出視窗 -->
+		<div id="sendModel" style="display: none; position: fixed; top: 0; left: 0;">
+			<div class="sendModelContent" style="position: relative;">
+				<span class="sendClose">&times;</span>
+				<div class="sendModelBox">
+					<form th:action="@{/sendButton_submit}" th:object="${message}" method="post">
+						<div class="left">
+							<label for="receiverEmail" class="mystyle">收信人&emsp; <span
+									th:if="${#fields.hasErrors('receiverid.email')}" th:errors="*{receiverid.email}"
+									style="color: red;"></span>
+							</label> <input type="email" th:field="*{receiverid.email}" />
+						</div>
+						<div class="left">
+							<label for="title" class="mystyle">標&emsp;題&emsp; <span
+									th:if="${#fields.hasErrors('title')}" th:errors="*{title}"
+									style="color: red;"></span>
+							</label> <input type="text" th:field="*{title}" />
+						</div>
+						<div class="left">
+							<label for="content" class="mystyle">內&emsp;文&emsp; <span
+									th:if="${#fields.hasErrors('content')}" th:errors="*{content}"
+									style="color: red;"></span>
+							</label>
+							<textarea th:field="*{content}"></textarea>
+						</div>
+						<input type="submit" value="寄信" class=" sendBtn" />
+					</form>
+				</div>
+			</div>
+		</div>
+	</main>
+	<div th:replace="fragments::footer"></div>
+	<script src="js/jquery-3.7.1.js"></script>
+	<script src="js/index.js" defer></script>
+	<script src="../static/js/index.js"></script>
+	<script>
+		// 彈窗js
+		$(document).ready(function () {
+			var model = $('#memberModel');
+			var span = $('.close');
+			$('.showMemberBtn').click(function () {
+				console.log('案件被點擊');
+				var memberid = $(this).data('memberid');
+				console.log('會員ID: ' + memberid);
+				$.ajax({
+					url: '/caseMember',
+					type: 'GET',
+					data: { memberid: memberid },
+					success: function (data) {
+						if (data) {
+							$('#caseMemberIcon').attr('src', data.picurl);
+							$('#name').text(data.name);
+							$('#account').text(data.account);
+							$('#email').text(data.email);
+							$('#tel').text(data.tel);
+							$('#birthday').text(data.birthday);
+							$('#tagNames').html(data.tagNames);
+							$('#github').attr('href', data.github).text(data.name + '的GitHub');
+							$('#intro').text(data.intro);
+							model.show();
+							console.log('彈窗數據注入成功');
+						} else {
+							console.log('接收到的數據為空');
+						}
+					},
+					error: function (jqXHR, textStatus, errorThrown) {
+						console.log('請求失敗: ' + textStatus);
+					}
+				});
+			});
+			// send彈窗
+			// 獲取彈窗和按鈕元素
+			var modal = document.getElementById("sendModel"); // 確保名稱一致
+			var openBtn = document.getElementById("openModalBtn");
+			var closeBtn = document.querySelector(".sendClose");
+
+			// 確保元素都成功選取
+			if (modal && openBtn && closeBtn) {
+				// 點擊按鈕打開彈窗
+				openBtn.onclick = function () {
+					modal.style.display = "block";
+				}
+
+				// 點擊關閉按鈕關閉彈窗
+				closeBtn.onclick = function () {
+					modal.style.display = "none";
+				}
+
+				// 點擊彈窗以外區域時也關閉彈窗
+				window.onclick = function (event) {
+					if (event.target === modal) {
+						modal.style.display = "none";
+					}
+				}
+			} else {
+				console.error("找不到 modal 或按鈕，請檢查 HTML 結構！");
+			}
+			span.click(function () {
+				model.hide();
+			});
+			$(window).click(function (event) {
+				if ($(event.target).is(model)) {
+					model.hide();
+				}
+			});
+		});
+	</script>
+</body>
+
+</html>

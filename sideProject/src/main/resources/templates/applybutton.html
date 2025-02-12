@@ -1,0 +1,34 @@
+<form id="agreeForm">
+    <input type="hidden" id="orderId" name="orderId" th:value="${order.orderid}" />
+    <input type="hidden" id="receiverId" name="receiverId" th:value="${order.memberid}" />
+
+    <!-- 同意申請按鈕 -->
+    <button type="button" id="agreeBtn" data-agree="true">同意申請</button>
+
+    <!-- 不同意申請按鈕 -->
+    <button type="button" id="disagreeBtn" data-agree="false">不同意申請</button>
+</form>
+
+<script>
+document.getElementById('agreeBtn').addEventListener('click', function () {
+    sendRequest(true);
+});
+
+document.getElementById('disagreeBtn').addEventListener('click', function () {
+    sendRequest(false);
+});
+
+function sendRequest(agree) {
+    var orderId = document.getElementById('orderId').value;
+    var receiverId = document.getElementById('receiverId').value;
+
+    fetch('/updateAgreeStatus', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: 'orderId=' + orderId + '&receiverId=' + receiverId + '&agree=' + agree
+    }).then(response => response.text())
+      .then(data => alert(data));
+}
+</script>

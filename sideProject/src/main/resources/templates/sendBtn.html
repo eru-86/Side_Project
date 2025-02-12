@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>測試彈窗首頁SideProject</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+		crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="CSS/fragment.css">
+	<link rel="stylesheet" href="CSS/sendBtn.css">
+	<link rel="stylesheet" href="../static/CSS/fragment.css">
+	<link rel="stylesheet" href="../static/CSS/sendBtn.css">
+	<style>
+
+
+	</style>
+</head>
+
+<body>
+	<div class="sticky" th:if="${member == null}" th:insert="fragments::header"></div>
+	<div class="sticky" th:if="${member!= null}" th:insert="fragments::userHeader"></div>
+
+	<main>
+		<!-- 隨機會員區，測試彈窗 -->
+		<section>
+			<button class="sendBtnMemberid" data-memberid="">詳細資料</button>
+		</section>
+		<!-- 彈窗HTML -->
+		<div id="sendModel">
+			<div class="sendModelContent">
+				<span class="sendClose">&times;</span>
+				<div class="sendModelBox">
+					<form th:action="@{/send_submit}" th:object="${message}" method="post"
+						enctype="multipart/form-data">
+						<div id="mesgDown">
+							<div class="sendemail">
+								<label for="receiverEmail" class="mystyle">
+									收信人&emsp;<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"
+										style="color:red; background-color: #eaeff3; width: 100px;">收件人錯誤</span>
+									<input type="text" th:field="*{receiverid.email}" id="receiverEmail" /></label>
+							</div>
+							<div class="sendemail">
+								<label for="title" class="mystyle">
+									標&emsp;題&emsp;<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"
+										style="color:red; background-color: #eaeff3; width: 100px;">標題錯誤</span>
+									<input type="text" th:field="*{title}" id="title" /></label>
+							</div>
+							<div class="sendemail">
+								<label for="content" class="mystyle">
+									內&emsp;文&emsp;<span th:if="${#fields.hasErrors('content')}" th:errors="*{content}"
+										style="color:red; background-color: #eaeff3; width: 100px;">內文錯誤</span>
+									<textarea th:field="*{content}" id="content"></textarea></label>
+							</div>
+							<input type="submit" value="寄信" class="submit sendBtn">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</main>
+	<div th:replace="fragments::footer"></div>
+	<script src="js/jquery-3.7.1.js"></script>
+	<script src="js/index.js" defer></script>
+	<script src="../static/js/index.js"></script>
+	<script>
+		// 彈窗js
+		$(document).ready(function () {
+			var model = $('#sendModel');
+			var span = $('.close');
+			$('.sendBtnMemberid').click(function () {
+				console.log('案件被點擊');
+				var memberid = $(this).data('memberid');
+				console.log('會員ID: ' + memberid);
+				$.ajax({
+					url: '/',//放你處理後端的URL
+					type: 'post',
+					data: { memberid: memberid },
+					success: function (data) {
+						if (data) {
+							$('#caseMemberIcon').attr('src', data.picurl);
+							$('#name').text(data.name);
+							$('#account').text(data.account);
+							$('#email').text(data.email);
+							$('#tel').text(data.tel);
+							$('#birthday').text(data.birthday);
+							$('#tagNames').html(data.tagNames);
+							$('#github').attr('href', data.github).text(data.name + '的GitHub');
+							$('#intro').text(data.intro);
+							model.show();
+							console.log('彈窗數據注入成功');
+						} else {
+							console.log('接收到的數據為空');
+						}
+					},
+					error: function (jqXHR, textStatus, errorThrown) {
+						console.log('請求失敗: ' + textStatus);
+					}
+				});
+			});
+			span.click(function () {
+				model.hide();
+			});
+			$(window).click(function (event) {
+				if ($(event.target).is(model)) {
+					model.hide();
+				}
+			});
+		});
+	</script>
+</body>
+
+</html>

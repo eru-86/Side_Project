@@ -1,0 +1,89 @@
+body {
+	background-color: #bbc8d8;
+	color: #303030;
+}
+#thumbnail, #input, #needEtc, [id^=another] {
+	border: 1px solid #c59650;
+	padding: 10px;
+	font-size: 18px;
+	background-color: #eaeff3;
+}
+
+#simpleInfo {
+	width: 90%;
+	height: 90px;
+	resize: none;
+	background-color: #eaeff3;
+}
+
+#projectTitle {
+	width: 90%;
+}
+
+input {
+	padding: 5px;
+	margin: 2px;
+	background-color: #eaeff3;
+}
+
+#casutamu {
+	width: 100px;
+}
+
+#people {
+	width: 60px;
+}
+
+#editor {
+	height: 500px;
+	overflow: auto;
+	background-color: #eaeff3;
+}
+
+.ql-editor img {
+	max-width: 900px; /* 設置圖片的最大寬度 */
+	height: auto; /* 高度自動調整 */
+}
+
+#insert {
+	background-color: #eaeff3;
+	font-size: 30px;
+	font-weight: bold;
+	border: 1px solid #c59650;
+}
+
+#preview {
+	display: none;
+	height: 100px;
+}
+
+#thumbnail>div {
+	min-height: 260px;
+}
+
+.col-8>div {
+	margin: 5px;
+}
+
+label, span, svg, p, .all, .ql-toolbar, .ql-editor, #region {
+	background-color: #eaeff3;
+}
+
+#imageInput {
+	width: 250px;
+}
+
+ol, li, strong, ul, em, u, s {
+	background-color: #eaeff3;
+}
+
+.container {
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+#projectTitle, #simpleInfo, #deadline, #people, #casutamu, select {
+	border: 1px solid #c59650;
+	border-radius: 5px;
+	margin: 10px;
+}

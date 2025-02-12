@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/css/register.css}">
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+        integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
+        crossorigin="anonymous"></script>
+    <script src="js/jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="CSS/fragment.css">
+    <link rel="stylesheet" href="/sideProject/src/main/resources/static/CSS/register.css">
+</head>
+
+<body>
+    <div class="sticky" th:if="${member == null}" th:insert="fragments::header"></div>
+    <div class="sticky" th:if="${member!= null}" th:insert="fragments::userHeader"></div>
+
+    <!-- 會員註冊窗口 -->
+    <div id="bigOut">
+        <div id="register" class="m-5">
+            <form class="row justify-content-md-center" th:action="@{/reg_submit}" th:object="${newMember}" method="post"
+                enctype="multipart/form-data" onsubmit="return validatePassword()">
+                <div class="col-sm-12 all">
+                    <h3>註冊帳號</h3>
+                    <hr>
+                    <div class="row justify-content-center all">
+                        <div class="col-auto all">
+                            <!-- 帳號： -->
+                            <input type="text" id="account" placeholder="使用者帳號" required th:field="*{account}"><br>
+                            <!-- 暱稱： -->
+                            <input type="text" id="username" placeholder="暱稱" required th:field="*{name}"><br>
+                            <!-- 手機號碼： -->
+                            <input type="tel" id="tel" placeholder="手機" required th:field="*{tel}"><br>
+                            <!-- E-mail： -->
+                            <input type="email" id="email" placeholder="電子信箱" required th:field="*{email}"><br>
+                        </div>
+                        <div class="col-auto all">
+                            <!-- 出生日期： -->
+                            <input type="date" id="birthday" placeholder="出生日期" required th:field="*{birthday}"><br>
+                            <!-- 輸入密碼： -->
+                            <input type="password" id="password" placeholder="密碼" required th:field="*{password}"><br>
+                            <!-- 確認密碼： -->
+                            <input type="password" id="checkpasswd" placeholder="確認密碼" required>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                </div>
+                <div class="col-sm-4 all">
+                    <h3>前端</h3>
+                    <hr>
+                    <label th:each="option : ${options}" th:for="${option.tagname}"
+                        th:if="${option.category} == 'Front'"  class="all">
+                        <input type="checkbox" th:id="${option.tagname}" name="selected" th:value="${option.tagid}">
+                        <span th:text="${option.tagname}">Java</span>
+                    </label>
+
+                    <br>
+                    <br>
+                </div>
+                <div class="col-sm-4 all">
+                    <h3>後端</h3>
+                    <hr>
+                    <label th:each="option : ${options}" th:for="${option.tagname}"
+                        th:if="${option.category} == 'Back'"  class="all">
+                        <input type="checkbox" th:id="${option.tagname}" name="selected" th:value="${option.tagid}">
+                        <span th:text="${option.tagname}">Java</span>
+                    </label>
+
+                    <br>
+                    <br>
+                </div>
+                <div class="col-sm-4 all">
+                    <h3>資料庫</h3>
+                    <hr>
+                    <label th:each="option : ${options}" th:for="${option.tagname}"
+                        th:if="${option.category} == 'Database'"  class="all">
+                        <input type="checkbox" th:id="${option.tagname}" name="selected" th:value="${option.tagid}">
+                        <span th:text="${option.tagname}">Java</span>
+                    </label>
+
+                    <br>
+                    <br>
+                </div>
+
+                <div id="next" class="all">
+                    <a href="/login" class="all"><input type="submit" value="下一步" class="submit" onclick="checkResult()"></a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div th:replace="fragments::footer"></div>
+    <script src="js/register.js"></script>
+</body>
+
+</html>

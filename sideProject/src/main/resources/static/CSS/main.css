@@ -1,0 +1,313 @@
+body {
+	background-color: #bbc8d8;
+	color: #303030;
+}
+
+#detailBox,
+#title,
+#member,
+#info,
+#buttonArea,
+[id^=another],
+#getProject,
+#evaluate {
+	border: 1px solid #c59650;
+	padding: 10px;
+	background-color: #eaeff3;
+}
+
+#evaluate {
+	margin-bottom: 8px;
+}
+
+#projectTitle {
+	min-height: 60px;
+}
+
+.another {
+	margin: 0 0 5px 0;
+}
+
+.memberLink {
+	color: #c59650;
+	border: 1px solid transparent;
+	border-radius: 5px;
+	padding: 2px 5px;
+}
+
+.memberLink:hover {
+	background-color: #14518e;
+	border: 1px solid #14518e;
+	color: #eaeff3;
+	transition: 0.5s;
+}
+
+#buttonArea {
+	height: 150px;
+	width: 150px;
+	position: fixed;
+	right: 10px;
+	bottom: 120px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+#goMember {
+	display: inline-block;
+	border: 1px solid #c59650;
+	color: #14518e;
+	padding: 0;
+	font-size: 20px;
+	height: 50px;
+	width: 100px;
+}
+
+#apply,
+#edit {
+	--bs-btn-padding-y: .20rem;
+	--bs-btn-padding-x: .20rem;
+	height: 50px;
+	width: 90px;
+	font-size: 24px;
+	display: none;
+	color: #14518e;
+	border: 1px solid #c59650;
+}
+
+#apply:hover,
+#edit:hover,
+#goMember:hover,
+#anotherButton:hover {
+	border: 1px solid #14518e;
+	color: #eaeff3;
+	background-color: #14518e;
+	transition: 0.5s;
+}
+
+#applyPeople {
+	font-size: 16px;
+}
+
+#collect {
+	text-decoration: none;
+}
+
+#info p {
+	font-size: 20px;
+	/* font-weight: bold; */
+}
+
+#info {
+	width: 55%;
+}
+
+#skill {
+	word-wrap: break-word;
+	white-space: normal;
+	word-break: break-all;
+}
+
+#member m {
+	font-size: 23px;
+	font-weight: bold;
+}
+
+#member {
+	width: 44.5%;
+	font-weight: bold;
+	max-height: 500px;
+}
+
+#memberArea {
+	display: grid;
+	grid-template-rows: 1fr 1fr;
+}
+
+#imgBorder {
+	border: 1.5px solid #c59650;
+	max-width: 300px;
+	max-height: 150px;
+	height: 150px;
+}
+
+#memberName {
+	font-size: 30px;
+	text-decoration: none;
+	color: #303030;
+}
+
+#introduce {
+	border: 1.5px solid #c59650;
+	max-height: 70px;
+	height: 70px;
+}
+
+#detail img {
+	max-width: 900px;
+	/* 設置圖片的最大寬度 */
+	height: auto;
+	/* 高度自動調整 */
+}
+
+a[class="d-inline col-md-3 mt-1"] {
+	color: #303030;
+	text-decoration: none;
+}
+
+#mail {
+	font-size: 24px;
+}
+
+#anotherTitle {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+#another>p,
+#getProject>p {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+#anotherImg {
+	width: 100%;
+	height: 110px;
+	max-height: 110px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.anotherImg {
+	width: 100%;
+	height: 100px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+#ButtonArea {
+	text-align: center;
+}
+
+p,
+m,
+.col,
+#updateDate,
+.text-end,
+#projectTitle,
+h5,
+#detail,
+a,
+.col-6,
+#rank,
+.all,
+#introduce,
+#imgBorder,
+img,
+#ButtonArea,
+s,
+strong,
+em,
+u,
+#applyPepple,
+.ButtonArea2,
+#applyevaluate,
+.mx-auto,
+#applyevaluate {
+	background-color: #eaeff3;
+}
+
+#anotherButton {
+	border-radius: 10px;
+	color: #14518e;
+	width: 85px;
+	margin: 10px;
+}
+
+.anotherTitle {
+	padding: 15px 0;
+	font-size: 24px;
+	font-weight: bold;
+	height: 60px;
+	text-align: center;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	background-color: #eaeff3;
+}
+
+#none {
+	background-color: transparent;
+}
+
+h4 {
+	margin-top: 40px;
+}
+
+.p-3 {
+	background-color: #eaeff3;
+	margin-left: 10px;
+	width: 380px;
+}
+
+#openModalBtn {
+	margin: 10px;
+	padding: 3px 8px;
+	border-radius: 10px;
+	border: 1px solid #14518e;
+	color: #14518e;
+	background-color: #bbc8d8;
+}
+
+#another,
+#getProject {
+	margin-bottom: 50px;
+}
+
+.d-inline {
+	background-color: #eaeff3;
+	border-radius: 10px;
+}
+
+.mx-auto {
+	border: 1.5px solid #c59650;
+	padding: 10px;
+}
+
+[id^=ButtonArea] {
+	background-color: #eaeff3;
+	text-align: center;
+}
+
+.evaArea {
+	border: 1.5px solid #c59650;
+	background-color: #eaeff3;
+}
+
+.evaAreaName {
+	width: 18%;
+	display: inline-block;
+	font-size: 20px;
+	background-color: #eaeff3;
+}
+
+.evaAreaRank {
+	width: 18%;
+	display: inline-block;
+	font-size: 20px;
+	background-color: #eaeff3;
+}
+
+.evaAreaEva {
+	width: 60%;
+	display: inline-block;
+	font-size: 20px;
+	background-color: #eaeff3;
+}
+
+span {
+	background-color: transparent;
+}

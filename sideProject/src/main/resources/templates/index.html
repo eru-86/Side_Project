@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>首頁SideProject</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+		crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="CSS/fragment.css">
+	<link rel="stylesheet" href="CSS/index.css">
+	<link rel="stylesheet" href="../static/CSS/index.css">
+	<link rel="stylesheet" href="../static/CSS/fragment.css">
+</head>
+
+<body>
+	<div class="sticky" th:if="${member == null}" th:insert="fragments::header"></div>
+	<div class="sticky" th:if="${member!= null}" th:insert="fragments::userHeader"></div>
+
+	<main>
+		<section class="row">
+			<div class="col-5">
+				<h1>熱門申請案件推薦</h1>
+				<div class="indexCaseBox" th:each="keywordCase, iter : ${keywordCase}">
+					<div class="boxBorder">
+						<a class="row" th:href="@{/order_main/{orderId}(orderId=${keywordCase.orderid})}">
+							<div class="col-8">
+								<h3 th:text=${keywordCase.name}>案件名稱案件名稱</h3>
+							</div>
+							<div class="col-4">
+								<p>申請人數 : <span th:text=${wantCounts[iter.index]}></span></p>
+							</div>
+							<p th:utext="${keywordCase.tagNames}">案件tag</p>
+						</a>
+					</div>
+				</div>
+			</div>
+			<!-- 搜尋框框 -->
+			<div class="col-7">
+				<div class="searchContainer">
+					<input type="text" id="keyword">
+					<button type="button" id="searchButton">
+						<i class="bi bi-search"></i>
+					</button>
+				</div>
+				<!-- 建議熱搜詞 -->
+				<div class="keywordList">
+					<tr th:each="Keyword:${kw}">
+						<button class="keywordBtn">
+							<td th:text=${Keyword.keyword}>熱搜詞</td>
+						</button>
+					</tr>
+				</div>
+				<div class="formBoxBorder">
+					<form id="searchForm" action="/search" method="get">
+						地區：
+						<label><input type="checkbox" id="location" name="options" value="location">地區全選</label>
+						<label><input type="checkbox" class="location" name="options" value="taipei">台北市</label>
+						<label><input type="checkbox" class="location" name="options" value="newTaipei">新北市</label>
+						<label><input type="checkbox" class="location" name="options" value="taoyuan">桃園市</label>
+						<label><input type="checkbox" class="location" name="options" value="keelung">基隆市</label>
+						<label><input type="checkbox" class="location" name="options" value="hsinchuCounty">新竹縣</label>
+						<label><input type="checkbox" class="location" name="options" value="hsinchuCity">新竹市</label>
+						<label><input type="checkbox" class="location" name="options" value="yilan">宜蘭縣</label>
+						<label><input type="checkbox" class="location" name="options" value="miaoli">苗栗縣</label>
+						<label><input type="checkbox" class="location" name="options" value="yunlin">雲林縣</label>
+						<label><input type="checkbox" class="location" name="options" value="taichung">台中市</label>
+						<label><input type="checkbox" class="location" name="options" value="changhua">彰化縣</label>
+						<label><input type="checkbox" class="location" name="options" value="nantou">南投縣</label>
+						<label><input type="checkbox" class="location" name="options" value="tainan">台南市</label>
+						<label><input type="checkbox" class="location" name="options" value="kaohsiung">高雄市</label>
+						<label><input type="checkbox" class="location" name="options" value="chiayiCounty">嘉義縣</label>
+						<label><input type="checkbox" class="location" name="options" value="chiayiCity">嘉義市</label>
+						<label><input type="checkbox" class="location" name="options" value="hualien">花蓮縣</label>
+						<label><input type="checkbox" class="location" name="options" value="taitung">台東縣</label>
+						<label><input type="checkbox" class="location" name="options" value="pingtung">屏東縣</label>
+						<label><input type="checkbox" class="location" name="options" value="penghu">澎湖縣</label>
+						<label><input type="checkbox" class="location" name="options" value="kinmen">金門縣</label>
+						<label><input type="checkbox" class="location" name="options" value="lienchiang">連江縣</label>
+						<label><input type="checkbox" class="location" name="options" value="remote">遠端</label><br>
+						類型：
+						<label><input type="checkbox" id="category" name="options" value="category">類型全選</label>
+						<label><input type="checkbox" class="category" name="options" value="web">網頁</label>
+						<label><input type="checkbox" class="category" name="options" value="game">遊戲</label>
+						<label><input type="checkbox" class="category" name="options" value="app">APP</label><br>
+						前端：
+						<label><input type="checkbox" id="front" name="options" value="front">前端全選</label>
+						<label><input type="checkbox" class="front" name="options" value="CSS">CSS</label>
+						<label><input type="checkbox" class="front" name="options" value="SCSS">SCSS</label>
+						<label><input type="checkbox" class="front" name="options" value="Sass">Sass</label>
+						<label><input type="checkbox" class="front" name="options" value="JavaScript">JavaScript</label>
+						<label><input type="checkbox" class="front" name="options" value="JQuery">JQuery</label>
+						<label><input type="checkbox" class="front" name="options" value="Vue">Vue</label>
+						<label><input type="checkbox" class="front" name="options" value="React">React</label>
+						<label><input type="checkbox" class="front" name="options" value="Angular">Angular</label><br>
+						後端：
+						<label><input type="checkbox" id="back" name="options" value="back">後端全選</label>
+						<label><input type="checkbox" class="back" name="options" value="Java">JAVA</label>
+						<label><input type="checkbox" class="back" name="options" value="Python">Python</label>
+						<label><input type="checkbox" class="back" name="options" value="Ruby">Ruby</label>
+						<label><input type="checkbox" class="back" name="options" value="PHP">PHP</label>
+						<label><input type="checkbox" class="back" name="options" value="C#">C#</label>
+						<label><input type="checkbox" class="back" name="options" value="C++">C++</label>
+						<label><input type="checkbox" class="back" name="options" value="Go">Go</label>
+						<label><input type="checkbox" class="back" name="options" value="Node.js">Node.js</label><br>
+						資料庫：
+						<label><input type="checkbox" id="database" name="options" value="database">資料庫全選</label>
+						<label><input type="checkbox" class="database" name="options" value="MySQL">MySQL</label>
+						<label><input type="checkbox" class="database" name="options" value="SQLServer">SQL
+							Server</label>
+						<label><input type="checkbox" class="database" name="options"
+								value="PostgreSQL">PostgreSQL</label>
+						<label><input type="checkbox" class="database" name="options" value="MongoDB">MongoDB</label>
+					</form>
+				</div>
+			</div>
+		</section>
+		<!-- 隨機會員區 -->
+		<section class="row memberCards">
+			<h1>推&nbsp;&nbsp;薦&nbsp;&nbsp;會&nbsp;&nbsp;員</h1>
+			<div class="col-3 memberCards" th:each="RanMember : ${ranMembers}">
+				<div class="boxBorder">
+					<a href="#" class="memberLink" th:data-memberid="${RanMember.memberid}">
+						<div id="userImg">
+							<img th:src="@{(${RanMember.picurl})}" alt="">
+						</div>
+						<div id="userData">
+							<h3 th:text="${RanMember.account}">會員暱稱</h3>
+							<!-- <h4 th:text="${RanMember.tagNames}">擅長技能</h4> -->
+						</div>
+						<p th:utext="${RanMember.tagNames}">擅長技能</p>
+					</a>
+				</div>
+			</div>
+		</section>
+	</main>
+	<div th:replace="fragments::footer"></div>
+	<script src="js/jquery-3.7.1.js"></script>
+	<script src="js/index.js" defer></script>
+	<script src="../static/js/index.js"></script>
+</body>
+
+</html>

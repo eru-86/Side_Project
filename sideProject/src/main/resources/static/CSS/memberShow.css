@@ -1,0 +1,107 @@
+* {
+    background-color: #bbc8d8;
+}
+
+main {
+    padding: 130px 10%;
+}
+
+/* 共用CSS */
+.viewText>span,
+.viewText>b {
+    background-color: transparent;
+    font-size: 1.2rem;
+}
+
+.viewText a {
+    background-color: transparent;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: #c59650;
+    padding: 2px;
+}
+
+.viewText a:hover {
+    border-width: 0 0 1px 0;
+    border-style: solid;
+    border-color: #c59650;
+}
+
+.viewText {
+    line-height: 38px;
+    padding: 0 20px;
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: normal;
+}
+
+.textCSS {
+    display: inline-block;
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: normal;
+    align-items: center;
+}
+
+.memberShowViewImg {
+    display: flex;
+    width: 20%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.memberShowBtn {
+    margin: 5px;
+    padding: 3px;
+    border-radius: 5px;
+}
+
+.memberShowIcon {
+    width: 200px;
+    height: 200px;
+    background-color: #eaeff3;
+    border-radius: 5px;
+    border: 0.5px solid #c59650;
+}
+
+#caseMemberIcon:hover {
+    box-shadow: 0px 0px 15px #c596506d;
+}
+
+/* 會員公開資訊頁專屬CSS */
+.memberShowFooter {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.memberShow {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+
+
+.memberShowView {
+    display: flexbox;
+    width: 40%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.showAbout {
+    padding: 5px 15px;
+    border: none;
+    border: solid 1px #c59650;
+    border-radius: 5px;
+    /* width: 100%; */
+    background-color: #eaeff3;
+    min-height: 200px;
+    flex-grow: 1;
+}
