@@ -1,3 +1,5 @@
-"# Side_Project" 
-資策會分組製作的結訓專題
-我負責的部分為
+您好
+這是我在資策會時與小組夥伴共同製作的結訓專題
+我負責的部分為order_edit.html,order_main.html,order_update.html和其他在此頁面會用到的功能，api，和外觀
+前端使用HTML,CSS,Boostrap,JavaScript,JQuery來建構網站頁面
+後端使用Spring框架來連接MySQL資料庫
